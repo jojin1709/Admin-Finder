@@ -4,46 +4,158 @@ Python script for checking common admin/login paths on websites you own or have 
 
 Developed by [JOJIN JOHN](https://www.linkedin.com/in/jojin-john/).
 
+## Features
+
+- Works with Python 3
+- No third-party packages required
+- Includes 1,000 unique admin/login paths
+- Supports custom wordlists
+- Works on Windows, Linux, macOS, and Termux
+
 ## Requirements
 
 - Python 3.8 or newer
-- No third-party packages required
+- Git
 
-## Usage
+## Clone The Repository
 
 ```bash
-python adm-finder.py https://example.com
+git clone https://github.com/jojin1709/Admin-Finder.git
+cd Admin-Finder
 ```
 
-On Windows you can also use:
+## Install
+
+No extra packages are required. This command is optional and should finish without installing anything:
+
+```bash
+pip install -r requirements.txt
+```
+
+If `pip` is not available, you can skip this step.
+
+## Run On Windows
+
+Using the Windows launcher:
 
 ```bat
 run.bat https://example.com
 ```
 
-You can also run it interactively:
+Using Python directly:
 
-```bash
+```bat
+python adm-finder.py https://example.com
+```
+
+Interactive mode:
+
+```bat
 python adm-finder.py
 ```
 
-Useful options:
+## Run On Linux, macOS, Or Termux
+
+```bash
+python3 adm-finder.py https://example.com
+```
+
+Interactive mode:
+
+```bash
+python3 adm-finder.py
+```
+
+## Examples
+
+Show only possible admin/login pages:
+
+```bash
+python adm-finder.py https://example.com
+```
+
+Show every checked response:
 
 ```bash
 python adm-finder.py https://example.com --show-all
-python adm-finder.py https://example.com --timeout 10 --delay 0.2
+```
+
+Use a slower scan:
+
+```bash
+python adm-finder.py https://example.com --delay 0.2
+```
+
+Use a longer request timeout:
+
+```bash
+python adm-finder.py https://example.com --timeout 10
+```
+
+Use a custom wordlist:
+
+```bash
 python adm-finder.py https://example.com --wordlist wordlist.txt
+```
+
+Disable colors:
+
+```bash
+python adm-finder.py https://example.com --no-color
+```
+
+## Options
+
+```text
+usage: adm-finder.py [-h] [-w WORDLIST] [-t TIMEOUT] [-d DELAY] [--show-all]
+                     [--no-color]
+                     [url]
+```
+
+- `url` - target URL, for example `https://example.com`
+- `-w, --wordlist` - path to a custom wordlist
+- `-t, --timeout` - request timeout in seconds
+- `-d, --delay` - delay between requests in seconds
+- `--show-all` - print non-matching responses too
+- `--no-color` - disable ANSI colors
+
+## Update The Tool
+
+If you already cloned the repository, update it with:
+
+```bash
+git pull origin main
 ```
 
 ## Files
 
-- `adm-finder.py` - the scanner script
+- `adm-finder.py` - scanner script
 - `wordlist.txt` - common admin/login paths used by the scanner
-- `run.bat` - Windows launcher for the scanner
-- `requirements.txt` - dependency note; no install packages are needed
+- `run.bat` - Windows launcher
+- `requirements.txt` - dependency note
 - `LICENSE` - MIT license file
 - `.gitignore` - generated/cache files Git should ignore
 - `README.md` - setup and usage instructions
+
+## Troubleshooting
+
+If `python` does not work on Linux, macOS, or Termux, use:
+
+```bash
+python3 adm-finder.py https://example.com
+```
+
+If Git is not installed, download it from:
+
+```text
+https://git-scm.com/downloads
+```
+
+If the scan is too fast for a target you own, add a delay:
+
+```bash
+python adm-finder.py https://example.com --delay 0.5
+```
 
 ## License
 
@@ -51,8 +163,6 @@ This project is released under the MIT License. See `LICENSE` for details.
 
 ## Notes
 
+Only scan websites you own or have explicit permission to test.
+
 The original project targeted Python 2. This version has been updated for Python 3 and loads `wordlist.txt` relative to the script location, so it works even when launched from another directory.
-
-The bundled wordlist includes 1,000 unique admin/login paths, including common CMS, ecommerce, control panel, framework, and dashboard routes. Use `--delay` when scanning larger targets so requests stay gentle.
-
-The entries inside `.gitignore` are not missing project files. They are generated folders and files that should be ignored if Python, tests, or packaging tools create them.
