@@ -161,9 +161,3 @@ python adm-finder.py https://example.com --delay 0.5
 ## License
 
 This project is released under the MIT License. See `LICENSE` for details.
-
-## Notes
-
-Only scan websites you own or have explicit permission to test.
-
-The original project targeted Python 2. This version has been updated for Python 3 and loads `wordlist.txt` relative to the script location, so it works even when launched from another directory.
