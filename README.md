@@ -9,6 +9,8 @@ Developed by [JOJIN JOHN](https://www.linkedin.com/in/jojin-john/).
 - Works with Python 3
 - No third-party packages required
 - Includes 1,000 unique admin/login paths
+- Live scan progress
+- Parallel scanning with configurable workers
 - Supports custom wordlists
 - Works on Windows, Linux, macOS, and Termux
 
@@ -71,50 +73,58 @@ python3 adm-finder.py https://example.com
 Show only possible admin/login pages:
 
 ```bash
-python adm-finder.py https://example.com
+python3 adm-finder.py https://example.com
 ```
 
 Show every checked response:
 
 ```bash
-python adm-finder.py https://example.com --show-all
+python3 adm-finder.py https://example.com --show-all
 ```
 
 Use a slower scan:
 
 ```bash
-python adm-finder.py https://example.com --delay 0.2
+python3 adm-finder.py https://example.com --delay 0.2
+```
+
+Use more or fewer parallel workers:
+
+```bash
+python3 adm-finder.py https://example.com --workers 12
+python3 adm-finder.py https://example.com --workers 1
 ```
 
 Use a longer request timeout:
 
 ```bash
-python adm-finder.py https://example.com --timeout 10
+python3 adm-finder.py https://example.com --timeout 10
 ```
 
 Use a custom wordlist:
 
 ```bash
-python adm-finder.py https://example.com --wordlist wordlist.txt
+python3 adm-finder.py https://example.com --wordlist wordlist.txt
 ```
 
 Disable colors:
 
 ```bash
-python adm-finder.py https://example.com --no-color
+python3 adm-finder.py https://example.com --no-color
 ```
 
 ## Options
 
 ```text
-usage: adm-finder.py [-h] [-w WORDLIST] [-t TIMEOUT] [-d DELAY] [--show-all]
-                     [--no-color]
+usage: adm-finder.py [-h] [-w WORDLIST] [-t TIMEOUT] [-c WORKERS] [-d DELAY]
+                     [--show-all] [--no-color]
                      [url]
 ```
 
 - `url` - target URL, for example `https://example.com`
 - `-w, --wordlist` - path to a custom wordlist
 - `-t, --timeout` - request timeout in seconds
+- `-c, --workers` - number of parallel requests
 - `-d, --delay` - delay between requests in seconds
 - `--show-all` - print non-matching responses too
 - `--no-color` - disable ANSI colors
@@ -155,8 +165,10 @@ https://git-scm.com/downloads
 If the scan is too fast for a target you own, add a delay:
 
 ```bash
-python adm-finder.py https://example.com --delay 0.5
+python3 adm-finder.py https://example.com --delay 0.5
 ```
+
+If the scan looks quiet, it is still working. By default it shows live progress and only prints found paths. Use `--show-all` to print every checked response.
 
 ## License
 
