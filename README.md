@@ -24,15 +24,19 @@ git clone https://github.com/jojin1709/Admin-Finder.git
 cd Admin-Finder
 ```
 
-## Install
+## Run On Kali, Linux, macOS, Or Termux
 
-No extra packages are required. This command is optional and should finish without installing anything:
+No install step is needed. Do not run `pip install`; this tool uses only Python's standard library.
 
 ```bash
-pip install -r requirements.txt
+python3 adm-finder.py https://example.com
 ```
 
-If `pip` is not available, you can skip this step.
+Interactive mode:
+
+```bash
+python3 adm-finder.py
+```
 
 ## Run On Windows
 
@@ -54,16 +58,12 @@ Interactive mode:
 python adm-finder.py
 ```
 
-## Run On Linux, macOS, Or Termux
+## Quick Start
 
 ```bash
+git clone https://github.com/jojin1709/Admin-Finder.git
+cd Admin-Finder
 python3 adm-finder.py https://example.com
-```
-
-Interactive mode:
-
-```bash
-python3 adm-finder.py
 ```
 
 ## Examples
@@ -132,7 +132,6 @@ git pull origin main
 - `adm-finder.py` - scanner script
 - `wordlist.txt` - common admin/login paths used by the scanner
 - `run.bat` - Windows launcher
-- `requirements.txt` - dependency note
 - `LICENSE` - MIT license file
 - `.gitignore` - generated/cache files Git should ignore
 - `README.md` - setup and usage instructions
@@ -144,6 +143,8 @@ If `python` does not work on Linux, macOS, or Termux, use:
 ```bash
 python3 adm-finder.py https://example.com
 ```
+
+If Kali shows `externally-managed-environment` after running `pip install`, you can ignore it. This project does not need `pip` or any external Python packages.
 
 If Git is not installed, download it from:
 
